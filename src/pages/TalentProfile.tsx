@@ -19,7 +19,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { fetchTalentById } from '@/services/api';
+import { talentsAPI } from "@/services/endpoints";
+
+// import { fetchTalentById } from '@/services/api';
 
 const TalentProfile = () => {
   const { id } = useParams();
@@ -37,7 +39,8 @@ const TalentProfile = () => {
   const loadTalent = async () => {
     try {
       setLoading(true);
-      const data = await fetchTalentById(id!);
+      const data =await talentsAPI.retrieve(id);
+
       setTalent(data);
     } catch (error) {
       console.error('Failed to load talent:', error);
