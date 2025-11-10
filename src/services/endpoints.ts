@@ -16,13 +16,31 @@ import { Talent, Company, DashboardStats, TestResult, APIResponse } from "@/type
 //   changePassword: (data: { old_password: string; new_password: string }) =>
 //     API.put("/auth/change-password/", data),
 // };
-export const authAPI = {
-  register: (data: { email: string; password: string; first_name?: string; last_name?: string }) =>
-  API.post("/api/v1/auth/register/", data),
 
+  // register: (data: { email: string; password: string; first_name?: string; last_name?: string }) =>
+  // API.post("/api/v1/auth/register/", data),
+
+  // login: (data: { email: string; password: string }) =>
+  //   API.post<{ access: string; refresh: string }>("/auth/login/", data),
+
+export const authAPI = {
   login: (data: { email: string; password: string }) =>
-    API.post<{ access: string; refresh: string }>("/auth/login/", data),
+    API.post<{ access: string; refresh: string }>("/api/v1/auth/login/", {
+      email: data.email,  // ✅ Send as 'email' not 'username'
+      password: data.password,
+    }),
+
+  register: (data: { email: string; password: string; first_name?: string; last_name?: string }) =>
+    API.post("/api/v1/auth/register/", data),
+
+  refresh: (data: { refresh: string }) => API.post("/api/v1/auth/refresh/", data),
+  me: () => API.get("/api/v1/auth/me/"),
+  changePassword: (data: { old_password: string; new_password: string }) =>
+    API.put("/api/v1/auth/change-password/", data),
 };
+
+
+
 
 
 // ===============================================================
