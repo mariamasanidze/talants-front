@@ -262,6 +262,277 @@
 //before adding backend fucntion to the join as a talent button
 
 
+// import { useState } from 'react';
+// import { motion } from 'framer-motion';
+// import { ArrowRight, CheckCircle, User, Mail, Phone, Code } from 'lucide-react';
+// import { Button } from '@/components/ui/button';
+// import { Input } from '@/components/ui/input';
+// import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+// import { Textarea } from '@/components/ui/textarea';
+// import { Label } from '@/components/ui/label';
+// import API from '@/services/api'; // ✅ axios instance already configured
+
+// const JoinAsTalent = () => {
+//   const [isSubmitted, setIsSubmitted] = useState(false);
+//   const [loading, setLoading] = useState(false);
+//   const [formData, setFormData] = useState({
+//     firstName: '',
+//     lastName: '',
+//     email: '',
+//     phone: '',
+//     skills: '',
+//     message: '',
+//   });
+
+//   const handleSubmit = async (e: React.FormEvent) => {
+//     e.preventDefault();
+//     setLoading(true);
+
+//     try {
+//       // ✅ Use the new public endpoint
+//       const res = await API.post('/api/v1/talents/join/', formData, {
+//         headers: { 'Content-Type': 'application/json' },
+//       });
+
+//       console.log('✅ Application submitted:', res.data);
+//       setIsSubmitted(true);
+//     } catch (error: any) {
+//       console.error('❌ Failed to submit talent form:', error);
+//       alert(
+//         error?.response?.data?.error ||
+//           error?.response?.data?.detail ||
+//           'Something went wrong while submitting your application.'
+//       );
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+  
+//   if (isSubmitted) {
+//     return (
+//       <div className="min-h-screen flex items-center justify-center py-8">
+//         <motion.div
+//           initial={{ opacity: 0, scale: 0.9 }}
+//           animate={{ opacity: 1, scale: 1 }}
+//           transition={{ duration: 0.5 }}
+//           className="max-w-md mx-auto px-4"
+//         >
+//           <Card className="cosmic-card text-center">
+//             <CardContent className="p-8">
+//               <motion.div
+//                 initial={{ scale: 0 }}
+//                 animate={{ scale: 1 }}
+//                 transition={{ delay: 0.2, type: 'spring' }}
+//                 className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
+//               >
+//                 <CheckCircle className="w-8 h-8 text-green-500" />
+//               </motion.div>
+
+//               <h2 className="text-2xl font-cosmic font-bold text-foreground mb-2">
+//                 Application Submitted!
+//               </h2>
+
+//               <p className="text-muted-foreground mb-6">
+//                 Thank you for joining our network! Our team will contact you soon.
+//               </p>
+
+//               <Button variant="cosmic" asChild className="w-full">
+//                 <a href="/">Return to Homepage</a>
+//               </Button>
+//             </CardContent>
+//           </Card>
+//         </motion.div>
+//       </div>
+//     );
+//   }
+
+
+//   return (
+//     <div className="min-h-screen py-8">
+//       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+//         <motion.div
+//           initial={{ opacity: 0, y: 20 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8 }}
+//         >
+//           <div className="text-center mb-12">
+//             <h1 className="text-4xl font-cosmic font-bold bg-gradient-nebula bg-clip-text text-transparent mb-4">
+//               Join Our Talent Network
+//             </h1>
+//             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+//               Connect with leading companies and unlock exciting career opportunities in tech
+//             </p>
+//           </div>
+
+//           <div className="grid lg:grid-cols-2 gap-12">
+//             {/* Benefits Section */}
+//             <motion.div
+//               initial={{ opacity: 0, x: -20 }}
+//               animate={{ opacity: 1, x: 0 }}
+//               transition={{ duration: 0.5, delay: 0.2 }}
+//             >
+//               <Card className="cosmic-card h-full">
+//                 <CardHeader>
+//                   <CardTitle className="flex items-center gap-2">
+//                     <User className="w-5 h-5 text-primary" />
+//                     Why Join Our Network?
+//                   </CardTitle>
+//                 </CardHeader>
+//                 <CardContent className="space-y-4">
+//                   {[
+//                     'Access to exclusive job opportunities',
+//                     'Work with top global companies',
+//                     'Competitive compensation packages',
+//                     'Remote-first opportunities',
+//                     'Professional skill testing and validation',
+//                     'Direct communication with employers',
+//                   ].map((benefit, index) => (
+//                     <motion.div
+//                       key={benefit}
+//                       className="flex items-start gap-3"
+//                       initial={{ opacity: 0, x: -10 }}
+//                       animate={{ opacity: 1, x: 0 }}
+//                       transition={{ duration: 0.3, delay: 0.1 * index }}
+//                     >
+//                       <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+//                         <CheckCircle className="w-3 h-3 text-primary" />
+//                       </div>
+//                       <p className="text-muted-foreground">{benefit}</p>
+//                     </motion.div>
+//                   ))}
+//                 </CardContent>
+//               </Card>
+//             </motion.div>
+
+//             {/* Form Section */}
+//             <motion.div
+//               initial={{ opacity: 0, x: 20 }}
+//               animate={{ opacity: 1, x: 0 }}
+//               transition={{ duration: 0.5, delay: 0.3 }}
+//             >
+//               <Card className="cosmic-card">
+//                 <CardHeader>
+//                   <CardTitle>Apply to Join</CardTitle>
+//                 </CardHeader>
+//                 <CardContent>
+//                   <form onSubmit={handleSubmit} className="space-y-4">
+//                     <div className="grid grid-cols-2 gap-4">
+//                       <div>
+//                         <Label htmlFor="firstName">First Name *</Label>
+//                         <Input
+//                           id="firstName"
+//                           placeholder="John"
+//                           value={formData.firstName}
+//                           onChange={(e) =>
+//                             setFormData({ ...formData, firstName: e.target.value })
+//                           }
+//                           required
+//                         />
+//                       </div>
+//                       <div>
+//                         <Label htmlFor="lastName">Last Name *</Label>
+//                         <Input
+//                           id="lastName"
+//                           placeholder="Doe"
+//                           value={formData.lastName}
+//                           onChange={(e) =>
+//                             setFormData({ ...formData, lastName: e.target.value })
+//                           }
+//                           required
+//                         />
+//                       </div>
+//                     </div>
+
+//                     <div>
+//                       <Label htmlFor="email">Email *</Label>
+//                       <div className="relative">
+//                         <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+//                         <Input
+//                           id="email"
+//                           type="email"
+//                           placeholder="john.doe@example.com"
+//                           className="pl-10"
+//                           value={formData.email}
+//                           onChange={(e) =>
+//                             setFormData({ ...formData, email: e.target.value })
+//                           }
+//                           required
+//                         />
+//                       </div>
+//                     </div>
+
+//                     <div>
+//                       <Label htmlFor="phone">Phone (Optional)</Label>
+//                       <div className="relative">
+//                         <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+//                         <Input
+//                           id="phone"
+//                           type="tel"
+//                           placeholder="+1 (555) 123-4567"
+//                           className="pl-10"
+//                           value={formData.phone}
+//                           onChange={(e) =>
+//                             setFormData({ ...formData, phone: e.target.value })
+//                           }
+//                         />
+//                       </div>
+//                     </div>
+
+//                     <div>
+//                       <Label htmlFor="skills">Skills *</Label>
+//                       <div className="relative">
+//                         <Code className="absolute left-3 top-3 text-muted-foreground w-4 h-4" />
+//                         <Textarea
+//                           id="skills"
+//                           placeholder="e.g., React, Node.js, Python, AWS..."
+//                           className="pl-10 min-h-[80px]"
+//                           value={formData.skills}
+//                           onChange={(e) =>
+//                             setFormData({ ...formData, skills: e.target.value })
+//                           }
+//                           required
+//                         />
+//                       </div>
+//                     </div>
+
+//                     <div>
+//                       <Label htmlFor="message">Message (Optional)</Label>
+//                       <Textarea
+//                         id="message"
+//                         placeholder="Tell us about your experience or preferences..."
+//                         className="min-h-[100px]"
+//                         value={formData.message}
+//                         onChange={(e) =>
+//                           setFormData({ ...formData, message: e.target.value })
+//                         }
+//                       />
+//                     </div>
+
+//                     <Button
+//                       type="submit"
+//                       variant="cosmic"
+//                       className="w-full group"
+//                       disabled={loading}
+//                     >
+//                       {loading ? 'Submitting...' : 'Submit Application'}
+//                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+//                     </Button>
+//                   </form>
+//                 </CardContent>
+//               </Card>
+//             </motion.div>
+//           </div>
+//         </motion.div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default JoinAsTalent;
+
+
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, User, Mail, Phone, Code } from 'lucide-react';
@@ -270,9 +541,12 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import API from '@/services/api'; // ✅ axios instance already configured
+import API from '@/services/api';
+import { useTranslation } from "react-i18next";
 
 const JoinAsTalent = () => {
+  const { t } = useTranslation();
+
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -289,31 +563,25 @@ const JoinAsTalent = () => {
     setLoading(true);
 
     try {
-      // ✅ Use the new public endpoint
       const res = await API.post('/api/v1/talents/join/', formData, {
         headers: { 'Content-Type': 'application/json' },
       });
 
-      console.log('✅ Application submitted:', res.data);
       setIsSubmitted(true);
     } catch (error: any) {
-      console.error('❌ Failed to submit talent form:', error);
       alert(
         error?.response?.data?.error ||
-          error?.response?.data?.detail ||
-          'Something went wrong while submitting your application.'
+        error?.response?.data?.detail ||
+        t("joinTalent.error")
       );
     } finally {
       setLoading(false);
     }
   };
 
-  // --------------------------
-  // ✅ Success Page after Submit
-  // --------------------------
   if (isSubmitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center py-8">
+      <div className="min-h-screen flex items-center justify-center  py-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -331,16 +599,16 @@ const JoinAsTalent = () => {
                 <CheckCircle className="w-8 h-8 text-green-500" />
               </motion.div>
 
-              <h2 className="text-2xl font-cosmic font-bold text-foreground mb-2">
-                Application Submitted!
+              <h2 className="text-3xl leading-[1.35] font-cosmic font-bold text-foreground mb-2">
+                {t("joinTalent.submittedTitle")}
               </h2>
 
               <p className="text-muted-foreground mb-6">
-                Thank you for joining our network! Our team will contact you soon.
+                {t("joinTalent.submittedText")}
               </p>
 
               <Button variant="cosmic" asChild className="w-full">
-                <a href="/">Return to Homepage</a>
+                <a href="/">{t("joinTalent.returnHome")}</a>
               </Button>
             </CardContent>
           </Card>
@@ -349,28 +617,27 @@ const JoinAsTalent = () => {
     );
   }
 
-  // --------------------------
-  // ✅ Main Form
-  // --------------------------
   return (
     <div className="min-h-screen py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-cosmic font-bold bg-gradient-nebula bg-clip-text text-transparent mb-4">
-              Join Our Talent Network
+            <h1 className="text-4xl leading-[1.35] mt-16 font-cosmic font-bold bg-gradient-nebula bg-clip-text text-transparent mb-4">
+              {t("joinTalent.title")}
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Connect with leading companies and unlock exciting career opportunities in tech
+              {t("joinTalent.subtitle")}
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Benefits Section */}
+
+            {/* Benefits */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -380,36 +647,31 @@ const JoinAsTalent = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <User className="w-5 h-5 text-primary" />
-                    Why Join Our Network?
+                    {t("joinTalent.benefitsTitle")}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  {[
-                    'Access to exclusive job opportunities',
-                    'Work with top global companies',
-                    'Competitive compensation packages',
-                    'Remote-first opportunities',
-                    'Professional skill testing and validation',
-                    'Direct communication with employers',
-                  ].map((benefit, index) => (
-                    <motion.div
-                      key={benefit}
-                      className="flex items-start gap-3"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: 0.1 * index }}
-                    >
-                      <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <CheckCircle className="w-3 h-3 text-primary" />
-                      </div>
-                      <p className="text-muted-foreground">{benefit}</p>
-                    </motion.div>
-                  ))}
+                  {t("joinTalent.benefits", { returnObjects: true }).map(
+                    (benefit: string, index: number) => (
+                      <motion.div
+                        key={index}
+                        className="flex items-start gap-3"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 * index }}
+                      >
+                        <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <CheckCircle className="w-3 h-3 text-primary" />
+                        </div>
+                        <p className="text-muted-foreground">{benefit}</p>
+                      </motion.div>
+                    )
+                  )}
                 </CardContent>
               </Card>
             </motion.div>
 
-            {/* Form Section */}
+            {/* Form */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -417,16 +679,16 @@ const JoinAsTalent = () => {
             >
               <Card className="cosmic-card">
                 <CardHeader>
-                  <CardTitle>Apply to Join</CardTitle>
+                  <CardTitle>{t("joinTalent.formTitle")}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-4">
+
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor="firstName">First Name *</Label>
+                        <Label>{t("joinTalent.firstName")}</Label>
                         <Input
-                          id="firstName"
-                          placeholder="John"
+                          placeholder={t("joinTalent.firstNamePlaceholder")}
                           value={formData.firstName}
                           onChange={(e) =>
                             setFormData({ ...formData, firstName: e.target.value })
@@ -435,10 +697,9 @@ const JoinAsTalent = () => {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="lastName">Last Name *</Label>
+                        <Label>{t("joinTalent.lastName")}</Label>
                         <Input
-                          id="lastName"
-                          placeholder="Doe"
+                          placeholder={t("joinTalent.lastNamePlaceholder")}
                           value={formData.lastName}
                           onChange={(e) =>
                             setFormData({ ...formData, lastName: e.target.value })
@@ -449,13 +710,12 @@ const JoinAsTalent = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="email">Email *</Label>
+                      <Label>{t("joinTalent.email")}</Label>
                       <div className="relative">
                         <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                         <Input
-                          id="email"
                           type="email"
-                          placeholder="john.doe@example.com"
+                          placeholder={t("joinTalent.emailPlaceholder")}
                           className="pl-10"
                           value={formData.email}
                           onChange={(e) =>
@@ -467,13 +727,12 @@ const JoinAsTalent = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="phone">Phone (Optional)</Label>
+                      <Label>{t("joinTalent.phone")}</Label>
                       <div className="relative">
                         <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                         <Input
-                          id="phone"
                           type="tel"
-                          placeholder="+1 (555) 123-4567"
+                          placeholder={t("joinTalent.phonePlaceholder")}
                           className="pl-10"
                           value={formData.phone}
                           onChange={(e) =>
@@ -484,12 +743,11 @@ const JoinAsTalent = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="skills">Skills *</Label>
+                      <Label>{t("joinTalent.skills")}</Label>
                       <div className="relative">
                         <Code className="absolute left-3 top-3 text-muted-foreground w-4 h-4" />
                         <Textarea
-                          id="skills"
-                          placeholder="e.g., React, Node.js, Python, AWS..."
+                          placeholder={t("joinTalent.skillsPlaceholder")}
                           className="pl-10 min-h-[80px]"
                           value={formData.skills}
                           onChange={(e) =>
@@ -501,10 +759,9 @@ const JoinAsTalent = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="message">Message (Optional)</Label>
+                      <Label>{t("joinTalent.message")}</Label>
                       <Textarea
-                        id="message"
-                        placeholder="Tell us about your experience or preferences..."
+                        placeholder={t("joinTalent.messagePlaceholder")}
                         className="min-h-[100px]"
                         value={formData.message}
                         onChange={(e) =>
@@ -519,13 +776,15 @@ const JoinAsTalent = () => {
                       className="w-full group"
                       disabled={loading}
                     >
-                      {loading ? 'Submitting...' : 'Submit Application'}
+                      {loading ? t("joinTalent.submitting") : t("joinTalent.submit")}
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
+
                   </form>
                 </CardContent>
               </Card>
             </motion.div>
+
           </div>
         </motion.div>
       </div>

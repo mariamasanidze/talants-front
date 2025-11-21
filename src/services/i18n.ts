@@ -343,6 +343,127 @@ const resources = {
   "phoneValue": "+995 579 58 88 59",
   "officeValue": "Kutaisi, St. Nino N4"
 },
+dashboard: {
+  title: "Dashboard",
+  subtitle: "Manage your shortlisted candidates and recruitment activity",
+
+  shortlistedTitle: "Shortlisted Candidates",
+  noShortlisted: "No shortlisted candidates yet.",
+  goToFind: "Go to",
+  findTalentLink: "Find Talent",
+
+  remove: "Remove from shortlist",
+  years: "yrs"
+},
+joinTalent: {
+  title: "Join Our Talent Network",
+  subtitle: "Connect with leading companies and unlock exciting career opportunities in tech",
+
+  benefitsTitle: "Why Join Our Network?",
+  benefits: [
+    "Access to exclusive job opportunities",
+    "Work with top global companies",
+    "Competitive compensation packages",
+    "Remote-first opportunities",
+    "Professional skill testing and validation",
+    "Direct communication with employers"
+  ],
+
+  formTitle: "Apply to Join",
+
+  firstName: "First Name *",
+  lastName: "Last Name *",
+  email: "Email *",
+  phone: "Phone (Optional)",
+  skills: "Skills *",
+  message: "Message (Optional)",
+
+  firstNamePlaceholder: "John",
+  lastNamePlaceholder: "Doe",
+  emailPlaceholder: "john.doe@example.com",
+  phonePlaceholder: "+1 (555) 123-4567",
+  skillsPlaceholder: "e.g., React, Node.js, Python, AWS...",
+  messagePlaceholder: "Tell us about your experience or preferences...",
+
+  submit: "Submit Application",
+  submitting: "Submitting...",
+
+  submittedTitle: "Application Submitted!",
+  submittedText: "Thank you for joining our network! Our team will contact you soon.",
+  returnHome: "Return to Homepage",
+
+  error: "Something went wrong while submitting your application."
+},
+signup: {
+  joinNebula: "Join Nebula",
+  connectFuture: "Connect with the future of talent acquisition",
+
+  whyChoose: "Why Choose Nebula?",
+  ready: "Ready to get started?",
+  joinThousands: "Join thousands of companies and professionals who trust Nebula for their talent acquisition needs.",
+
+  benefits: [
+    "Access to 50,000+ verified talents",
+    "AI-powered skill matching",
+    "Secure payment processing",
+    "Global talent network",
+    "Priority support"
+  ],
+
+  createAccount: "Create Your Account",
+  companyRegistration: "Company Registration",
+  registerCompany: "Register your company to find and hire top talent",
+
+  firstName: "First Name",
+  lastName: "Last Name",
+  email: "Email address",
+  company: "Company Name",
+  jobTitle: "Job Title",
+  countrySelect: "Select your country",
+
+  password: "Password",
+  confirmPassword: "Confirm Password",
+
+  agree: "I agree to the",
+  terms: "Terms of Service",
+  privacy: "Privacy Policy",
+  and: "and",
+
+  create: "Create Account",
+  haveAccount: "Already have an account?",
+  signIn: "Sign in",
+
+  error: "Error",
+  mustAgree: "Please agree to the terms and conditions.",
+  passwordMismatch: "Passwords do not match.",
+  success: "Success",
+  accountCreated: "Account created successfully!",
+  fail: "Registration failed",
+  errorGeneric: "Something went wrong. Please try again."
+},
+
+countries: {
+  us: "United States",
+  uk: "United Kingdom",
+  ca: "Canada",
+  au: "Australia",
+  de: "Germany",
+  fr: "France",
+  ge: "Georgia",
+  other: "Other"
+},
+
+welcomeBack: "Welcome Back",
+signInSubtitle: "Sign in to your Nebula account",
+signIn: "Sign In",
+email: "Email address",
+password: "Password",
+signInAsCompany: "Sign In as Company",
+signingIn: "Signing in...",
+noAccount: "Don't have an account?",
+registerCompany: "Register Company",
+invalidCredentials: "Invalid email or password.",
+genericError: "Something went wrong. Try again later.",
 
       footer: {
         platform: "Platform",
@@ -387,7 +508,7 @@ const resources = {
         title: "მსოფლიო დონის ტალანტები გლობალური კომპანიებისთვის",
         subtitle:
           "AI-ით მართული სიზუსტე, დაჩქარებული პროცესი და საიმედო კადრები.",
-        findTalent: "დიწყე კანდიდატების ძიება",
+        findTalent: "დაიწყე კანდიდატების ძიება",
         joinTalent: "შეუერთდი ტალანტების ქსელს",
         getStarted: "დაწყება",
       },
@@ -690,8 +811,128 @@ const resources = {
   },
   "subtitle": "გაიცანი ადამიანები, რომლებიც ქმნიან ხვალინდელ ტექნოლოგიებს"
 },
+signup: {
+  joinNebula: "შეუერთდი Nebula-ს",
+  connectFuture: "დაუკავშირდი ტალანტების შერჩევის მომავალს",
 
+  whyChoose: "რატომ Nebula?",
+  ready: "მზად ხარ დაწყებისთვის?",
+  joinThousands: "შეუერთდი ათასობით კომპანიას და პროფესიონალს, რომლებიც ენდობიან Nebula-ს.",
 
+  benefits: [
+    "50,000+ ვერიფიცირებულ ტალანტზე წვდომა",
+    "AI-ზე დაფუძნებული უნარების შერჩევა",
+    "უსაფრთხო გადახდების სისტემა",
+    "გლობალური ტალანტების ქსელი",
+    "პრიორიტეტული მხარდაჭერა"
+  ],
+
+  createAccount: "შექმენი ანგარიში",
+  companyRegistration: "კომპანიის რეგისტრაცია",
+  registerCompany: "დარეგისტრირდი და იპოვე საუკეთესო ტალანტები",
+
+  firstName: "სახელი",
+  lastName: "გვარი",
+  email: "ელ. ფოსტა",
+  company: "კომპანიის სახელი",
+  jobTitle: "პოზიცია",
+  countrySelect: "აირჩიე ქვეყანა",
+
+  password: "პაროლი",
+  confirmPassword: "პაროლის დადასტურება",
+
+  agree: "ვეთანხმები",
+  terms: "მომსახურების წესებს",
+  privacy: "კონფიდენციალურობის პოლიტიკას",
+  and: "და",
+
+  create: "ანგარიშის შექმნა",
+  haveAccount: "უკვე გაქვს ანგარიში?",
+  signIn: "შესვლა",
+
+  error: "შეცდომა",
+  mustAgree: "გთხოვ, დაეთანხმო წესებს და პირობებს.",
+  passwordMismatch: "პაროლები არ ემთხვევა.",
+  success: "წარმატებული ოპერაცია",
+  accountCreated: "ანგარიში წარმატებით შეიქმნა!",
+  fail: "რეგისტრაცია ვერ შესრულდა",
+  errorGeneric: "დაფიქსირდა შეცდომა. გთხოვ, სცადე კიდევ."
+},
+
+countries: {
+  us: "აშშ",
+  uk: "დიდი ბრიტანეთი",
+  ca: "კანადა",
+  au: "ავსტრალია",
+  de: "გერმანია",
+  fr: "საფრანგეთი",
+  ge: "საქართველო",
+  other: "სხვა"
+},
+
+dashboard: {
+  title: "დაფა",
+  subtitle: "მართეთ თქვენი მონიშნული კანდიდატები და დაქირავების პროცესი",
+
+  shortlistedTitle: "მონიშნული კანდიდატები",
+  noShortlisted: "ჯერ არ გყავთ მონიშნული კანდიდატები.",
+  goToFind: "გადადით",
+  findTalentLink: "ტალანტის მოძიებაში",
+
+  remove: "მონიშნულებიდან წაშლა",
+  years: "წელი"
+},
+joinTalent: {
+  title: "შემოუერთდი ჩვენს ტალანტებს",
+  subtitle: "დაკავშირდი წამყვან კომპანიებთან და აღმოაჩინე საინტერესო კარიერული შესაძლებლობები",
+
+  benefitsTitle: "რატომ უნდა შემოგვიერთდე?",
+  benefits: [
+    "ექსკლუზიურ სამუშაო შეთავაზებებზე წვდომა",
+    "თანამშრომლობა გლობალურ წამყვან კომპანიებთან",
+    "კონკურენტული ანაზღაურება",
+    "დისტანციური სამუშაოს შესაძლებლობები",
+    "პროფესიული ტესტირება და უნარების ვალიდაცია",
+    "პირდაპირი კომუნიკაცია დამსაქმებლებთან"
+  ],
+
+  formTitle: "შევსე განაცხადი",
+
+  firstName: "სახელი *",
+  lastName: "გვარი *",
+  email: "ელ. ფოსტა *",
+  phone: "ტელეფონი (არასავალდებულო)",
+  skills: "უნარები *",
+  message: "შეტყობინება (არასავალდებულო)",
+
+  firstNamePlaceholder: "გიორგი",
+  lastNamePlaceholder: "ბერიძე",
+  emailPlaceholder: "giorgi.beridze@example.com",
+  phonePlaceholder: "+995 5XX XXX XXX",
+  skillsPlaceholder: "მაგ.: React, Node.js, Python, AWS...",
+  messagePlaceholder: "მოგვიყევი გამოცდილების ან პრეფერენციების შესახებ...",
+
+  submit: "განაცხადის გაგზავნა",
+  submitting: "იგზავნება...",
+
+  submittedTitle: "განაცხადი მიღებულია!",
+  submittedText: "გმადლობ, რომ შეუერთდი ჩვენს ქსელს! ჩვენი გუნდი მალე დაგიკავშირდება.",
+  returnHome: "დაბრუნდი მთავარ გვერდზე",
+
+  error: "აპლიკაციის გაგზავნისას დაფიქსირდა შეცდომა."
+},
+
+welcomeBack: "კეთილი იყოს თქვენი დაბრუნება",
+signInSubtitle: "შედით თქვენს Nebula ანგარიშში",
+signIn: "სისტემაში შესვლა",
+email: "ელ. ფოსტის მისამართი",
+password: "პაროლი",
+signInAsCompany: "შესვლა კომპანიად",
+signingIn: "ავტორიზაცია...",
+noAccount: "არ გაქვთ ანგარიში?",
+registerCompany: "დარეგისტრირდით კომპანიად",
+invalidCredentials: "არასწორი ელ. ფოსტა ან პაროლი.",
+genericError: "დაფიქსირდა შეცდომა. სცადეთ მოგვიანებით.",
 
       filters: {
         skills: "უნარები (React, Python, AI/ML...)",
