@@ -155,7 +155,8 @@
 
 
 
-// import { useState, useEffect, useCallback } from "react";
+
+// import { useState, useEffect } from "react";
 // import { motion } from "framer-motion";
 // import { useTranslation } from "react-i18next";
 // import { Users } from "lucide-react";
@@ -165,7 +166,7 @@
 // import { LoadingSpinner } from "@/components/ui/loading-spinner";
 // import { SearchFilters } from "@/components/common/SearchFilters";
 
-// // Mock talents (kept as-is)
+
 // const mockTalents: Talent[] = [
 //   {
 //     id: "1",
@@ -196,15 +197,13 @@
 //       { name: "PostgreSQL", proficiency: "Advanced" },
 //     ],
 //     seniority: "Mid-Level",
+//     testScores: { overall: 87, technical: 85, communication: 88 },
 //     yearsExperience: 4,
 //     location: "Remote (US)",
 //     availability: "Available",
 //     lastProject:
 //       "Built patient data integration system with REST APIs and AI insights.",
-//     testScores: { overall: 87, technical: 85, communication: 88 },
 //     salaryRange: { min: 70000, max: 90000, currency: "$" },
-//     industry: ["Healthcare", "AI", "Cloud"],
-//     workType: "Full-time",
 //   },
 //   {
 //     id: "3",
@@ -216,46 +215,98 @@
 //       { name: "NLP", proficiency: "Advanced" },
 //     ],
 //     seniority: "Senior",
+//     testScores: { overall: 91, technical: 93, communication: 89 },
 //     yearsExperience: 6,
 //     location: "Berlin, Germany",
 //     availability: "Busy",
 //     lastProject:
 //       "Created an NLP model for financial document analysis with 92% accuracy.",
-//     testScores: { overall: 91, technical: 93, communication: 89 },
 //     salaryRange: { min: 100000, max: 130000, currency: "$" },
-//     industry: ["AI", "Finance", "Analytics"],
-//     workType: "Full-time",
 //   },
 // ];
 
 // const TalentSearch = () => {
 //   const { t } = useTranslation();
+
 //   const [talents, setTalents] = useState<Talent[]>([]);
 //   const [loading, setLoading] = useState(true);
+
 //   const [filters, setFilters] = useState<TalentFilters>({
 //     skills: "",
-//     seniority: "",
-//     location: "",
+//     seniority: "any",
+//     location: "any",
 //     minSalary: "",
 //     maxSalary: "",
-//     availability: "",
+//     availability: "any",
 //   });
 
-//   const loadTalents = useCallback(async () => {
-//     setLoading(true);
-//     // Simulate request delay; use mock for now
-//     await new Promise((r) => setTimeout(r, 400));
+//   useEffect(() => {
 //     setTalents(mockTalents);
 //     setLoading(false);
 //   }, []);
 
-//   useEffect(() => {
-//     loadTalents();
-//   }, [loadTalents]);
+//   const applyFilters = () => {
+//     let filtered = [...mockTalents];
 
-//   const handleFiltersChange = (newFilters: TalentFilters) => setFilters(newFilters);
-//   const handleSearch = () => loadTalents();
-//   const resetFilters = () =>
+//     if (filters.skills.trim()) {
+//       const text = filters.skills.toLowerCase();
+//       filtered = filtered.filter((talent) =>
+//         talent.skills.some((s) =>
+//           (s.name || "").toLowerCase().includes(text)
+//         )
+//       );
+//     }
+
+//     if (filters.seniority !== "any" && filters.seniority !== "") {
+//       filtered = filtered.filter(
+//         (talent) => talent.seniority.toLowerCase() === filters.seniority
+//       );
+//     }
+
+//     if (filters.location !== "any" && filters.location !== "") {
+//       filtered = filtered.filter((talent) =>
+//         talent.location.toLowerCase().includes(filters.location)
+//       );
+//     }
+
+//     if (filters.availability !== "any" && filters.availability !== "") {
+//       filtered = filtered.filter(
+//         (talent) =>
+//           (talent.availability || "").toLowerCase() ===
+//           filters.availability.toLowerCase()
+//       );
+//     }
+
+//     if (filters.minSalary) {
+//       filtered = filtered.filter(
+//         (talent) => talent.salaryRange.min >= Number(filters.minSalary)
+//       );
+//     }
+
+//     if (filters.maxSalary) {
+//       filtered = filtered.filter(
+//         (talent) => talent.salaryRange.max <= Number(filters.maxSalary)
+//       );
+//     }
+
+//     setTalents(filtered);
+//   };
+
+//   useEffect(() => {
+//     applyFilters();
+//   }, [filters]);
+
+//   const handleFiltersChange = (newFilters: TalentFilters) => {
+//     setFilters(newFilters);
+//   };
+
+//   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+//     if (event.key === "Enter") {
+//       applyFilters();
+//     }
+//   };
+
+//   const resetFilters = () => {
 //     setFilters({
 //       skills: "",
 //       seniority: "any",
@@ -264,10 +315,11 @@
 //       maxSalary: "",
 //       availability: "any",
 //     });
-
+//     setTalents(mockTalents);
+//   };
 
 //   return (
-//     <div className="min-h-screen page-padding">
+//     <div className="min-h-screen mt-20 page-padding">
 //       <div className="cosmic-container">
 //         {/* Header */}
 //         <motion.div
@@ -276,17 +328,14 @@
 //           animate={{ opacity: 1, y: 0 }}
 //           transition={{ duration: 0.8 }}
 //         >
-//           <h1 className="text-4xl font-cosmic font-bold text-foreground mb-4">
+//           <h1 className="text-5xl font-cosmic font-bold  text-foreground mb-4">
 //             {t("forCompanies.hireSection.title.part1", "Hire Bold")}{" "}
 //             <span className="text-primary text-glow">
 //               {t("forCompanies.hireSection.title.highlight", "Hire Brilliant")}
 //             </span>
 //           </h1>
 //           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-//             {t(
-//               "forCompanies.hireSection.subtitle",
-//               "Meet the minds shaping tomorrow’s technology"
-//             )}
+//             Meet the minds shaping tomorrow’s technology
 //           </p>
 //         </motion.div>
 
@@ -301,9 +350,10 @@
 //             <SearchFilters
 //               filters={filters}
 //               onFiltersChange={handleFiltersChange}
-//               onSearch={handleSearch}
+//               onSearch={applyFilters}
 //               onReset={resetFilters}
 //               isLoading={loading}
+//               onKeyDown={handleKeyDown} 
 //             />
 //           </motion.div>
 
@@ -342,8 +392,6 @@
 
 // export default TalentSearch;
 
-
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -354,7 +402,6 @@ import { EmptyState } from "@/components/common/EmptyState";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { SearchFilters } from "@/components/common/SearchFilters";
 
-// Mock talents (kept as-is)
 const mockTalents: Talent[] = [
   {
     id: "1",
@@ -433,7 +480,6 @@ const TalentSearch = () => {
     setLoading(false);
   }, []);
 
-  // 🔥 FILTERING FUNCTION (unchanged)
   const applyFilters = () => {
     let filtered = [...mockTalents];
 
@@ -481,7 +527,6 @@ const TalentSearch = () => {
     setTalents(filtered);
   };
 
-  // 🔥 ENABLE LIVE FILTERING
   useEffect(() => {
     applyFilters();
   }, [filters]);
@@ -490,7 +535,6 @@ const TalentSearch = () => {
     setFilters(newFilters);
   };
 
-  // Press Enter ➜ apply filters
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       applyFilters();
@@ -510,8 +554,9 @@ const TalentSearch = () => {
   };
 
   return (
-    <div className="min-h-screen page-padding">
+    <div className="min-h-screen mt-20 page-padding">
       <div className="cosmic-container">
+        
         {/* Header */}
         <motion.div
           className="text-center mb-12"
@@ -519,18 +564,32 @@ const TalentSearch = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl font-cosmic font-bold text-foreground mb-4">
-            {t("forCompanies.hireSection.title.part1", "Hire Bold")}{" "}
+          {/* <h1 className="text-5xl font-cosmic font-bold text-foreground mb-4">
+            {t("forCompanies.hireSection.title.part1")}{" "}
             <span className="text-primary text-glow">
-              {t("forCompanies.hireSection.title.highlight", "Hire Brilliant")}
+              {t("forCompanies.hireSection.title.highlight")}
             </span>
           </h1>
+
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Meet the minds shaping tomorrow’s technology
-          </p>
+            {t("talentSearch.subtitle")}
+          </p> */}
+
+          <h1 className="text-5xl font-cosmic font-bold text-foreground mb-4">
+  {t("findTalent.title.part1")}{" "}
+  <span className="text-primary text-glow">
+    {t("findTalent.title.highlight")}
+  </span>
+</h1>
+
+<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+  {t("findTalent.subtitle")}
+</p>
+
         </motion.div>
 
         <div className="grid lg:grid-cols-4 gap-8">
+          
           {/* Filters */}
           <motion.div
             className="lg:col-span-1"
@@ -544,7 +603,7 @@ const TalentSearch = () => {
               onSearch={applyFilters}
               onReset={resetFilters}
               isLoading={loading}
-              onKeyDown={handleKeyDown} 
+              onKeyDown={handleKeyDown}
             />
           </motion.div>
 
@@ -557,9 +616,9 @@ const TalentSearch = () => {
             ) : talents.length === 0 ? (
               <EmptyState
                 icon={Users}
-                title="No talents found"
-                description="Try adjusting your filters or search criteria"
-                actionLabel="Reset Filters"
+                title={t("talentSearch.noResults")}
+                description={t("talentSearch.noResultsDesc")}
+                actionLabel={t("talentSearch.resetFilters")}
                 onAction={resetFilters}
               />
             ) : (

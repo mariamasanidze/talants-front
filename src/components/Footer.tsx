@@ -8,9 +8,7 @@ import {
   Twitter, 
   Linkedin, 
   Github,
-  Shield,
-  FileText,
-  HelpCircle
+  Shield
 } from 'lucide-react';
 
 const Footer = () => {
@@ -18,7 +16,7 @@ const Footer = () => {
 
   const footerSections = [
     {
-      title: 'Platform',
+      title: t('footer.platform'),
       links: [
         { label: t('nav.findTalent'), href: '/talent-search' },
         { label: t('nav.forCompanies'), href: '/for-companies' },
@@ -27,21 +25,21 @@ const Footer = () => {
       ]
     },
     {
-      title: 'Resources',
+      title: t('footer.resources'),
       links: [
-        { label: 'Help Center', href: '/help' },
-        { label: 'Blog', href: '/blog' },
-        { label: 'API Documentation', href: '/api-docs' },
-        { label: 'Case Studies', href: '/case-studies' },
+        { label: t('footer.helpCenter'), href: '/help' },
+        { label: t('footer.blog'), href: '/blog' },
+        { label: t('footer.apiDocs'), href: '/api-docs' },
+        { label: t('footer.caseStudies'), href: '/case-studies' },
       ]
     },
     {
-      title: 'Legal',
+      title: t('footer.legal'),
       links: [
-        { label: 'Privacy Policy', href: '/privacy' },
-        { label: 'Terms of Service', href: '/terms' },
-        { label: 'GDPR Compliance', href: '/gdpr' },
-        { label: 'Cookie Policy', href: '/cookies' },
+        { label: t('footer.privacy'), href: '/privacy' },
+        { label: t('footer.terms'), href: '/terms' },
+        { label: t('footer.gdpr'), href: '/gdpr' },
+        { label: t('footer.cookies'), href: '/cookies' },
       ]
     }
   ];
@@ -56,6 +54,7 @@ const Footer = () => {
     <footer className="bg-card/50 border-t border-border backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <motion.div
@@ -80,15 +79,15 @@ const Footer = () => {
               <div className="space-y-2 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  <span>contact@nebula.ai</span>
+                  <span>{t('footer.contactEmail')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>{t('footer.contactPhone')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4" />
-                  <span>San Francisco, CA</span>
+                  <span>{t('footer.location')}</span>
                 </div>
               </div>
             </motion.div>
@@ -132,10 +131,10 @@ const Footer = () => {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <span>© 2024 Nebula Platform. All rights reserved.</span>
+              <span>{t('footer.copyright')}</span>
               <div className="flex items-center gap-1">
                 <Shield className="w-4 h-4" />
-                <span>GDPR Compliant</span>
+                <span>{t('footer.gdprCompliant')}</span>
               </div>
             </motion.div>
 

@@ -6,10 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import CounterAnimation from '@/components/CounterAnimation';
 import TypingAnimation from '@/components/TypingAnimation';
-// import { mockStats, mockCompanies } from '@/services/api';
-
-
-
 const Index = () => {
   const { t } = useTranslation();
   
@@ -41,26 +37,6 @@ const Index = () => {
     }
   ];
 
-  // const howItWorksSteps = [
-  //   {
-  //     step: '01',
-  //     title: 'Define Your Needs',
-  //     description: 'Tell us your goals, team culture, and requirements.',
-  //     icon: CheckCircle
-  //   },
-  //   {
-  //     step: '02',
-  //     title: 'AI Matching',
-  //     description: 'Instantly get the best-fit candidates from our vetted talent pool.',
-  //     icon: Zap
-  //   },
-  //   {
-  //     step: '03',
-  //     title: 'Connect & Hire',
-  //     description: 'Interview with confidence and build your team without delays.',
-  //     icon: Users
-  //   }
-  // ];
 const howItWorksSteps = [
   {
     step: '01',
@@ -90,6 +66,7 @@ const stats = [
 
   return (
     <div className="relative">
+
       {/* Hero Section */}
      
 <section className="relative isolate pt-20 pb-32 lg:pt-32 lg:pb-56 overflow-visible">
@@ -189,26 +166,20 @@ const stats = [
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            {/* <h2 className="text-3xl lg:text-4xl font-cosmic font-bold text-foreground mb-4 flex items-center justify-center gap-4">
-              Why Choose 
-              <img 
-                src="/lovable-uploads/22313fbf-15da-4ba3-a73c-166a88ce45f1.png" 
-                alt="Nebula" 
-                className="h-8 w-auto inline"
-              />?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              We combine AI precision with human expertise to help you hire the right talent 3x faster and with confidence.
-            </p> 
-             */}
-  <h2 className="text-3xl lg:text-4xl font-cosmic font-bold text-foreground mb-4 flex items-center justify-center gap-4">
-  {t('whyChoose.title')}
+
+<h2 className="text-4xl  font-cosmic font-bold mb-4 flex items-center justify-center gap-4 leading-relaxed">
+  <span className="bg-gradient-nebula bg-clip-text text-transparent text-glow-lg">
+    {t('whyChoose.title')}
+  </span>
+
   <img 
     src="/lovable-uploads/22313fbf-15da-4ba3-a73c-166a88ce45f1.png" 
     alt="Nebula" 
-    className="h-8 w-auto inline"
-  />?
+    className="h-12 w-auto inline"
+  />
 </h2>
+
+
 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
   {t('whyChoose.subtitle')}
 </p>
@@ -253,15 +224,18 @@ const stats = [
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            {/* <h2 className="text-3xl lg:text-4xl font-cosmic font-bold text-foreground mb-4">
-              How It <span className="text-accent text-glow">Works</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-               A fast, effective hiring process designed for tech-driven teams.
-            </p> */}
-            <h2 className="text-3xl lg:text-4xl font-cosmic font-bold text-foreground mb-4">
-  {t('howItWorks.title')} <span className="text-accent text-glow">{t('howItWorks.highlight')}</span>
-</h2>
+            
+ 
+ <h2 className="text-4xl  font-cosmic font-bold mb-4 leading-relaxed flex items-center justify-center gap-2">
+  <span className="bg-gradient-nebula bg-clip-text text-transparent text-glow-lg">
+    {t('howItWorks.title')}
+  </span>
+
+  <span className="bg-gradient-nebula bg-clip-text text-transparent text-glow-lg">
+    {t('howItWorks.highlight')}
+  </span>
+</h2> 
+
 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
   {t('howItWorks.subtitle')}
 </p>
@@ -315,26 +289,7 @@ const stats = [
 </h2>
 
 
-            {/* <h2 className="text-2xl font-semibold text-muted-foreground mb-8">
-              Trusted by Innovators Worldwide – From startups to enterprises, Nebula helps companies scale faster with top AI & tech talent.
-            </h2> */}
-            {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60 hover:opacity-80 transition-opacity">
-              {mockCompanies.map((company, index) => (
-                <motion.div
-                  key={company.id}
-                  className="text-center"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <div className="w-20 h-10 bg-muted rounded flex items-center justify-center text-xs font-medium">
-                    {company.name}
-                  </div>
-                </motion.div>
-              ))}
-            </div> */}
+          
           </motion.div>
         </div>
       </section>
@@ -348,16 +303,14 @@ const stats = [
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl lg:text-4xl font-cosmic font-bold text-white mb-6">
-                {t('cta.title')}
-            </h2>
+          
 
-            {/* <h2 className="text-3xl lg:text-4xl font-cosmic font-bold text-white mb-6">
-              Ready to Find Your Perfect Match?
-            </h2>  */}
-             {/* <p className="text-xl text-white/80 mb-8">
-              Hire Smarter. Scale Faster. Join thousands of global companies already building stronger teams with Nebula.
-            </p> */}
+           <h2 className="text-4xl  font-cosmic font-bold mb-6 leading-relaxed flex items-center justify-center">
+  <span className="bg-gradient-nebula bg-clip-text text-transparent text-glow-lg">
+    {t('cta.title')}
+  </span>
+</h2>
+
             <p className="text-xl text-white/80 mb-8">
                  {t('cta.subtitle')}
                     </p>
@@ -367,11 +320,6 @@ const stats = [
                 <Link to="/signup" className="group">
                   {t('hero.getStarted')}
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button variant="glow" size="xl" asChild>
-                <Link to="/contact">
-                  Contact Sales
                 </Link>
               </Button>
             </div>
